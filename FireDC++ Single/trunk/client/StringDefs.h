@@ -631,6 +631,18 @@ enum Strings { // @DontAdd
 	WAITING_USERS_ONLINE, // "Waiting (%d of %d users online)"
 	YES_STR, // "Yes"
 	YOU_ARE_BEING_REDIRECTED, // "You are being redirected to "
+	SOUND_DOWNLOAD_BEGINS, // "Download begins"
+	SOUND_DOWNLOAD_FINISHED, // "Download finished"
+	SOUND_SOURCE_ADDED, // "Alternate source added"
+	SOUND_UPLOAD_FINISHED, // "Upload finished"
+	MYNICK_IN_CHAT, // "My nick in mainchat"
+	SOUND_TTH_INVALID, // "File is corrupted"
+	SOUND_EXCEPTION, // "Unhandled Exception"
+	HUB_CONNECTED, // "Hub connected"
+	HUB_DISCONNECTED, // "Hub disconnected"
+	FAVUSER_ONLINE, // "Favorite user online"
+	SOUND_FAKER_FOUND, // "Faker found"
+	SOUND_TYPING_NOTIFY, // "Typing notification"
 	LAST // @DontAdd
 };
 
@@ -638,5 +650,11 @@ enum Strings { // @DontAdd
 // @NamesTwo: string ResourceManager::namesTwo[]
 enum StringsTwo {
 	CLEAR, // "Clear chat"
+	SETFIREDC_PRIVATE_SOUND, // "Private message sound"
+	NONE, // "None"
+	SETTINGS_FIREDC, // "FireDC++"
+	SOUND_START_UPLOAD,  // "Upload begins"
+	SOUND_URL_CLICK,  // "URL Clicked"
+	TEST, // "Test"
 	LASTTWO // @DontAdd
 };

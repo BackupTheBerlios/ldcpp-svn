@@ -461,6 +461,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\windows\Sounds.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\windows\SpyFrame.cpp"
 				>
 			</File>
@@ -699,6 +703,10 @@
 			</File>
 			<File
 				RelativePath="windows\SingleInstance.h"
+				>
+			</File>
+			<File
+				RelativePath=".\windows\Sounds.h"
 				>
 			</File>
 			<File

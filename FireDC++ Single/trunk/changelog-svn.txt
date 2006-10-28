@@ -1,0 +1,18 @@
+** svn 2
+	Added Sounds:
+		- Download Begins
+		- Download Finished
+		- Upload Finished
+		- Private Message
+		- Hub Connected
+		- Hub Disconnected
+		- Favorite User Online
+		- Upload Begins
+		- Typing Notification
+
+** svn 1
+	Removed "Make annoying...."(x2) from Advanced Page
+	Added SoundManager.ccp/.h
+	Added Sounds.cpp/.h
+	Added Play Sound on every PM
+	

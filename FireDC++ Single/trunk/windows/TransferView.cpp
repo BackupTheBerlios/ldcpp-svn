@@ -25,6 +25,10 @@
 #include "../client/ConnectionManager.h"
 #include "../client/ClientManager.h"
 
+//FireDC++ start
+#include "../client/SoundManager.h"
+//FireDC++ end
+
 #include "WinUtil.h"
 #include "TransferView.h"
 
@@ -479,6 +483,13 @@ void TransferView::on(DownloadManagerListener::Starting, Download* aDownload) {
 	ui->setSize(aDownload->getSize());
 	ui->setFile(Text::toT(aDownload->getTarget()));
 	ui->setStatusString(TSTRING(DOWNLOAD_STARTING));
+
+//FireDC++ start
+			if(!aDownload->isSet(Download::FLAG_USER_LIST)) {
+				SOUND(SoundManager::DOWNLOAD_BEGINS);
+			}			
+//FireDC++ end
+
 	tstring country = Text::toT(Util::getIpCountry(aDownload->getUserConnection().getRemoteIp()));
 	tstring ip = Text::toT(aDownload->getUserConnection().getRemoteIp());
 	if(country.empty()) {
@@ -572,6 +583,10 @@ void TransferView::on(UploadManagerListener::Starting, Upload* aUpload) {
 	if(aUpload->isSet(Download::FLAG_TREE_DOWNLOAD)) {
 		ui->file = _T("TTH: ") + ui->file;
 	}
+
+//FireDC++ start
+	SOUND(SoundManager::START_UPLOAD);
+//FireDC++ end
 
 	speak(UPDATE_ITEM, ui);
 }

@@ -594,6 +594,9 @@ void DownloadManager::on(UserConnectionListener::Data, UserConnection* aSource, 
 	try {
 		d->addPos(d->getFile()->write(aData, aLen), aLen);
 
+//FireDC++ start
+//		SOUND(SoundManager::TTH_INVALID);
+//FireDC++ end
 		if(d->getPos() > d->getSize()) {
 			throw Exception(STRING(TOO_MUCH_DATA));
 		} else if(d->getPos() == d->getSize()) {

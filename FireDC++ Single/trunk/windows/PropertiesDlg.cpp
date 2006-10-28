@@ -36,6 +36,7 @@
 #include "WindowsPage.h"
 #include "QueuePage.h"
 #include "CertificatesPage.h"
+#include "Sounds.h"
 
 PropertiesDlg::PropertiesDlg(HWND parent, SettingsManager *s) : TreePropertySheet(CTSTRING(SETTINGS), 0, parent)
 {
@@ -54,6 +55,7 @@ PropertiesDlg::PropertiesDlg(HWND parent, SettingsManager *s) : TreePropertyShee
 	pages[n++] = new Advanced3Page(s);
 	pages[n++] = new UCPage(s);
 	pages[n++] = new CertificatesPage(s);
+	pages[n++] = new Sounds(s);
 
 	for(int i=0; i<numPages; i++) {
 		AddPage(pages[i]->getPSP());

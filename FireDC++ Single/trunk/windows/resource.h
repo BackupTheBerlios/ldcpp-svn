@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by c:\Documents\VCProjects\DCPlusPlus\DCPlusPlus.rc
+// Used by h:\MAIN PROJECT DC++\FireDC++\Single\1\DCPlusPlus.rc
 //
 #define IDD_ABOUTBOX                    100
 #define IDC_TRAY_QUIT                   102
@@ -36,6 +36,7 @@
 #define IDD_FAVORITEHUB                 224
 #define IDR_USERS                       225
 #define IDD_LOGPAGE                     226
+#define IDD_SOUNDS                      227
 #define IDI_MAGNET                      229
 #define IDD_USER_COMMAND                230
 #define IDR_FINISHED_DL                 231
@@ -378,6 +379,10 @@
 #define IDC_SETTINGS_SOCKET_OUT_BUFFER  1319
 #define IDC_SETTINGS_SOCKET_IN_BUFFER   1320
 #define IDC_CHECK1                      1321
+#define IDC_SOUND_OPTIONS               1322
+#define IDC_SOUND_FILE                  1323
+#define IDC_SETTINGS_SOUND              1324
+#define IDC_SETTINGS_FILE_SOUND         1325
 #define IDC_AUTODROP_SPEED              1350
 #define IDC_AUTODROP_INTERVAL           1351
 #define IDC_AUTODROP_ELAPSED            1352
@@ -451,6 +456,9 @@
 #define IDC_REMOVE_SOURCES              8000
 #define IDC_DOWNLOAD_FAVORITE_DIRS      8500
 #define IDC_DOWNLOAD_WHOLE_FAVORITE_DIRS 9000
+#define IDC_FIREDC_PM_SOUND                10107
+#define IDC_NONE                        10041
+#define IDC_TEST                        10042
 #define ID_FILE_CONNECT                 32772
 #define ID_FILE_SETTINGS                32774
 #define ID_FILE_RECONNECT               32775

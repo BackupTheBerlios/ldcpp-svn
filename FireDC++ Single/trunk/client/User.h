@@ -69,6 +69,9 @@ public:
 		bool operator()(const Ptr& a, const Ptr& b) const { return (&(*a)) < (&(*b)); }
 	};
 
+//FireDC++ start
+	User(const string& nick) : firstNick(nick), soundActive(true) { }
+//FireDC++ end
 	User(const CID& aCID) : cid(aCID) { }
 
 	virtual ~User() throw() { }
@@ -80,6 +83,9 @@ public:
 	bool isNMDC() const { return isSet(NMDC); }
 
 	GETSET(string, firstNick, FirstNick);
+//FireDC++ start
+	GETSET(bool, soundActive, SoundActive);
+//FireDC++ end
 private:
 	User(const User&);
 	User& operator=(const User&);

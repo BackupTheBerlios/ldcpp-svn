@@ -27,7 +27,12 @@
 #include <pthread.h>
 #include <sched.h>
 #include <sys/resource.h>
+//FireDC++ start
+#else
+#pragma warning(disable: 4201) // nonstandard extension used: nameless struct/union
+#include <Mmsystem.h>
 #endif
+//FireDC++ end
 
 #include "Exception.h"
 STANDARD_EXCEPTION(ThreadException);

@@ -31,6 +31,9 @@
 #include "../client/StringTokenizer.h"
 #include "../client/FavoriteManager.h"
 #include "../client/LogManager.h"
+//FireDC++ start
+#include "../client/SoundManager.h"
+//FireDC++ end
 #include "../client/AdcCommand.h"
 #include "../client/ConnectionManager.h"
 #include "../client/SearchManager.h"
@@ -493,9 +496,16 @@ LRESULT HubFrame::onSpeaker(UINT /*uMsg*/, WPARAM /* wParam */, LPARAM /* lParam
 	for(TaskQueue::Iter i = t.begin(); i != t.end(); ++i) {
 		if(i->first == UPDATE_USER) {
 			updateUser(*static_cast<UserTask*>(i->second));
+
 		} else if(i->first == UPDATE_USER_JOIN) {
 			UserTask& u = *static_cast<UserTask*>(i->second);
 			if(updateUser(u)) {
+
+//FireDC++ start
+				if (FavoriteManager::getInstance()->isFavoriteUser(u.user))
+					SOUND(SoundManager::FAVUSER_ONLINE);
+//FireDC++ end
+
 				if (showJoins || (favShowJoins && FavoriteManager::getInstance()->isFavoriteUser(u.user))) {
 					addLine(_T("*** ") + TSTRING(JOINS) + Text::toT(u.identity.getNick()));
 				}
@@ -509,9 +519,15 @@ LRESULT HubFrame::onSpeaker(UINT /*uMsg*/, WPARAM /* wParam */, LPARAM /* lParam
 		} else if(i->first == CONNECTED) {
 			addClientLine(TSTRING(CONNECTED));
 			setTabColor(GREEN);
+//FireDC++ start
+			SOUND(SoundManager::HUB_CONNECTED);
+//FireDC++ end
 		} else if(i->first == DISCONNECTED) {
 			clearUserList();
 			setTabColor(RED);
+//FireDC++ start
+			SOUND(SoundManager::HUB_DISCONNECTED);
+//FireDC++ end
 		} else if(i->first == ADD_CHAT_LINE) {
 			addLine(Text::toT(static_cast<StringTask*>(i->second)->str));
 		} else if(i->first == ADD_STATUS_LINE) {
@@ -1035,6 +1051,11 @@ LRESULT HubFrame::onChar(UINT uMsg, WPARAM wParam, LPARAM /*lParam*/, BOOL& bHan
 				bHandled = FALSE;
 				break;
 		}
+//FireDC++ start
+		if ((uMsg == WM_CHAR) && (GetFocus() == ctrlMessage.m_hWnd) && (wParam != VK_RETURN) && (wParam != VK_TAB) && (wParam != VK_BACK)) {
+			SOUND(SoundManager::TYPING_NOTIFY);
+		}
+//FireDC++ end
 		return 0;
 	}
 

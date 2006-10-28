@@ -34,15 +34,11 @@ PropPage::TextItem Appearance2Page::texts[] = {
 	{ IDC_SETTINGS_REQUIRES_RESTART, ResourceManager::SETTINGS_REQUIRES_RESTART },
 	{ IDC_SETTINGS_UPLOAD_BAR_COLOR, ResourceManager::UPLOADS },
 	{ IDC_SETTINGS_SOUNDS, ResourceManager::SETTINGS_SOUNDS },
-	{ IDC_PRIVATE_MESSAGE_BEEP, ResourceManager::SETTINGS_PM_BEEP },
-	{ IDC_PRIVATE_MESSAGE_BEEP_OPEN, ResourceManager::SETTINGS_PM_BEEP_OPEN },
 	{ IDC_SETTINGS_DOWNLOAD_BAR_COLOR, ResourceManager::DOWNLOADS },
 	{ 0, ResourceManager::SETTINGS_AUTO_AWAY }
 };
 
 PropPage::Item Appearance2Page::items[] = {
-	{ IDC_PRIVATE_MESSAGE_BEEP, SettingsManager::PRIVATE_MESSAGE_BEEP, PropPage::T_BOOL },
-	{ IDC_PRIVATE_MESSAGE_BEEP_OPEN, SettingsManager::PRIVATE_MESSAGE_BEEP_OPEN, PropPage::T_BOOL },
 	{ 0, 0, PropPage::T_END }
 };
 

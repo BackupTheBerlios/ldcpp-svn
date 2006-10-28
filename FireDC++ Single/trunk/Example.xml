@@ -627,8 +627,26 @@
 		<String Name="WaitingUsersOnline">Waiting (%d of %d users online)</String>
 		<String Name="YesStr">Yes</String>
 		<String Name="YouAreBeingRedirected">You are being redirected to </String>
+		<String Name="SoundDownloadBegins">Download begins</String>
+		<String Name="SoundDownloadFinished">Download finished</String>
+		<String Name="SoundSourceAdded">Alternate source added</String>
+		<String Name="SoundUploadFinished">Upload finished</String>
+		<String Name="MynickInChat">My nick in mainchat</String>
+		<String Name="SoundTthInvalid">File is corrupted</String>
+		<String Name="SoundException">Unhandled Exception</String>
+		<String Name="HubConnected">Hub connected</String>
+		<String Name="HubDisconnected">Hub disconnected</String>
+		<String Name="FavuserOnline">Favorite user online</String>
+		<String Name="SoundFakerFound">Faker found</String>
+		<String Name="SoundTypingNotify">Typing notification</String>
 	</Strings>
 	<StringsTwo>
 		<StringTwo Name="Clear">Clear chat</StringTwo>
+		<StringTwo Name="SetfiredcPrivateSound">Private message sound</StringTwo>
+		<StringTwo Name="None">None</StringTwo>
+		<StringTwo Name="SettingsFiredc">FireDC++</StringTwo>
+		<StringTwo Name="SoundStartUpload">Upload begins</StringTwo>
+		<StringTwo Name="SoundUrlClick">URL Clicked</StringTwo>
+		<StringTwo Name="Test">Test</StringTwo>
 	</StringsTwo>
 </Language>

@@ -28,6 +28,9 @@
 #include "../client/ClientManager.h"
 #include "../client/Util.h"
 #include "../client/LogManager.h"
+//FireDC++ start
+#include "../client/SoundManager.h"
+//FireDC++ end
 #include "../client/UploadManager.h"
 #include "../client/ShareManager.h"
 #include "../client/FavoriteManager.h"
@@ -79,19 +82,42 @@ void PrivateFrame::gotMessage(const User::Ptr& from, const User::Ptr& to, const 
 		p = new PrivateFrame(user);
 		frames[user] = p;
 		p->readLog();
+
+//FireDC++ start
+				if(BOOLSETTING(PRIVATE_MESSAGE_BEEP) && (!BOOLSETTING(SOUNDS_DISABLED)) && user->getSoundActive()) {
+					if(SETTING(BEEPFILE).empty()) {
+						MessageBeep(MB_OK);
+					} else {
+						SOUND(SoundManager::PM);
+					}
+				}
+//FireDC++ end
+
 		p->addLine(aMessage);
 		if(Util::getAway()) {
 			if(!(BOOLSETTING(NO_AWAYMSG_TO_BOTS) && user->isSet(User::BOT)))
 				p->sendMessage(Text::toT(Util::getAwayMessage()));
 		}
 
-		if(BOOLSETTING(PRIVATE_MESSAGE_BEEP) || BOOLSETTING(PRIVATE_MESSAGE_BEEP_OPEN)) {
+//FireDC++ start
+			if((BOOLSETTING(PRIVATE_MESSAGE_BEEP) || BOOLSETTING(PRIVATE_MESSAGE_BEEP_OPEN)) && (!BOOLSETTING(SOUNDS_DISABLED)) && user->getSoundActive()) {
+				if (SETTING(BEEPFILE).empty()) {
 			MessageBeep(MB_OK);
-		}
-	} else {
-		if(BOOLSETTING(PRIVATE_MESSAGE_BEEP)) {
+				} else {
+					SOUND(SoundManager::PM);
+				}
+			}
+//FireDC++ end
+		} else {
+//FireDC++ start
+		if(BOOLSETTING(PRIVATE_MESSAGE_BEEP) && (!BOOLSETTING(SOUNDS_DISABLED)) && user->getSoundActive()) {
+			if (SETTING(BEEPFILE).empty()) {
 			MessageBeep(MB_OK);
+			} else {
+				SOUND(SoundManager::PM);
+			}
 		}
+//FireDC++ end
 		i->second->addLine(aMessage);
 	}
 }
@@ -115,6 +141,27 @@ void PrivateFrame::openWindow(const User::Ptr& replyTo, const tstring& msg) {
 }
 
 LRESULT PrivateFrame::onChar(UINT uMsg, WPARAM wParam, LPARAM /*lParam*/, BOOL& bHandled) {
+//FireDC++ start
+	if (uMsg != WM_KEYDOWN) {
+		switch(wParam) {
+			case VK_RETURN:
+				if( (GetKeyState(VK_CONTROL) & 0x8000) || (GetKeyState(VK_MENU) & 0x8000) ) {
+					bHandled = FALSE;
+				}
+				break;
+		case VK_TAB:
+				bHandled = TRUE;
+  				break;
+  			default:
+  				bHandled = FALSE;
+				break;
+		}
+		if ((uMsg == WM_CHAR) && (GetFocus() == ctrlMessage.m_hWnd) && (wParam != VK_RETURN) && (wParam != VK_TAB) && (wParam != VK_BACK)) {
+			SOUND(SoundManager::TYPING_NOTIFY);
+		}
+		return 0;
+	}
+//FireDC++ end
 	switch(wParam) {
 	case VK_RETURN:
 		if( WinUtil::isShift() || WinUtil::isCtrl() || WinUtil::isAlt() ) {

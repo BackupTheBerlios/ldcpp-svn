@@ -555,6 +555,9 @@ bool QueueManager::addSource(QueueItem* qi, User::Ptr aUser, Flags::MaskType add
 		qi->removeSource(aUser, QueueItem::Source::FLAG_PASSIVE);
 		wantConnection = false;
 	} else {
+//FireDC++ start
+//		SOUND(SoundManager::SOURCE_ADDED);
+//FireDC++ end
 		userQueue.add(qi, aUser);
 	}
 

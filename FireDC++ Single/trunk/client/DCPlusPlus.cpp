@@ -29,6 +29,9 @@
 #include "ClientManager.h"
 #include "HashManager.h"
 #include "LogManager.h"
+//FireDC++ start
+#include "SoundManager.h"
+//FireDC++ end
 #include "FavoriteManager.h"
 #include "SettingsManager.h"
 #include "FinishedManager.h"
@@ -54,6 +57,9 @@ void startup(void (*f)(void*, const string&), void* p) {
 	SettingsManager::newInstance();
 
 	LogManager::newInstance();
+//FireDC++ start
+	SoundManager::newInstance();
+//FireDC++ end
 	TimerManager::newInstance();
 	HashManager::newInstance();
 	CryptoManager::newInstance();
@@ -110,6 +116,9 @@ void shutdown() {
 	FavoriteManager::deleteInstance();
 	ClientManager::deleteInstance();
 	HashManager::deleteInstance();
+//FireDC++ start
+	SoundManager::deleteInstance();
+//FireDC++ end
 	LogManager::deleteInstance();
 	SettingsManager::deleteInstance();
 	TimerManager::deleteInstance();
