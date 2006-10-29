@@ -387,7 +387,7 @@ enum Strings { // @DontAdd
 	SETTINGS_ALLOW_UNTRUSTED_HUBS, // "Allow TLS connections to hubs without trusted certificate"
 	SETTINGS_ANTI_FRAG, // "Use antifragmentation method for downloads"
 	SETTINGS_APPEARANCE, // "Appearance"
-	SETTINGS_APPEARANCE2, // "Appearance\\Colors and sounds"
+	SETTINGS_APPEARANCE2, // "Appearance\\Colors"
 	SETTINGS_AUTODROP_AUTODROPSETTINGS, // "Autodrop settings"
 	SETTINGS_AUTODROP_SPEED, // "Drop sources below"
 	SETTINGS_AUTODROP_INTERVAL, // "Check every"

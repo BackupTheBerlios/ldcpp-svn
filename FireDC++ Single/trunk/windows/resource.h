@@ -15,6 +15,7 @@
 #define IDC_SERVER                      133
 #define IDC_EXTERNAL_IP                 133
 #define IDC_FILES                       135
+#define IDB_TYPEDTREE_LIST				136
 #define IDB_FOLDERS                     206
 #define IDB_ARROWS                      207
 #define IDD_LINE                        208

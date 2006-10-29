@@ -1,3 +1,9 @@
+** svn 3
+	Modified ProperiesDlg.cpp
+	Modified TypedTreeList.cpp/.h
+	Added icons in the Settings Tree
+	Rearranged the BMP in directories;	@TODO fix positions
+
 ** svn 2
 	Added Sounds:
 		- Download Begins

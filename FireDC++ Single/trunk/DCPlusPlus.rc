@@ -52,12 +52,13 @@ END
 // Bitmap
 //
 
-IDB_FOLDERS             BITMAP                  "res\\folders.bmp"
-IDB_ARROWS              BITMAP                  "res\\arrows.bmp"
-IDB_USERS               BITMAP                  "res\\users.bmp"
-IDB_TOOLBAR             BITMAP                  "res\\toolbar.bmp"
-IDB_TOOLBAR20           BITMAP                  "res\\toolbar20.bmp"
-IDB_TOOLBAR20_HOT       BITMAP                  "res\\toolbar20-highlight.bmp"
+IDB_FOLDERS             BITMAP                  "res\\32bpp\\folders.bmp"
+IDB_ARROWS              BITMAP                  "res\\32bpp\\arrows.bmp"
+IDB_USERS               BITMAP                  "res\\32bpp\\users.bmp"
+IDB_TOOLBAR             BITMAP                  "res\\32bpp\\toolbar.bmp"
+IDB_TOOLBAR20           BITMAP                  "res\\32bpp\\toolbar20.bmp"
+IDB_TOOLBAR20_HOT       BITMAP                  "res\\32bpp\\toolbar20-highlight.bmp"
+IDB_TYPEDTREE_LIST		BITMAP					"res\\32bpp\\settings_tree.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //

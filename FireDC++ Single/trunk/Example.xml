@@ -383,7 +383,7 @@
 		<String Name="SettingsAllowUntrustedHubs">Allow TLS connections to hubs without trusted certificate</String>
 		<String Name="SettingsAntiFrag">Use antifragmentation method for downloads</String>
 		<String Name="SettingsAppearance">Appearance</String>
-		<String Name="SettingsAppearance2">Appearance\\Colors and sounds</String>
+		<String Name="SettingsAppearance2">Appearance\\Colors</String>
 		<String Name="SettingsAutodropAutodropsettings">Autodrop settings</String>
 		<String Name="SettingsAutodropSpeed">Drop sources below</String>
 		<String Name="SettingsAutodropInterval">Check every</String>
