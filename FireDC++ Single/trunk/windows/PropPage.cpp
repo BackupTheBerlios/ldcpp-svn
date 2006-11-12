@@ -71,14 +71,7 @@ void PropPage::read(HWND page, Item const* items, ListItem* listItems /* = NULL 
 
 		for(int i = 0; listItems[i].setting != 0; i++) {
 			lvi.iItem = i;
-
-//FireDC++ start
-			if(listItems[i].desc != ResourceManager::LAST)
 			lvi.pszText = const_cast<TCHAR*>(CTSTRING_I(listItems[i].desc));
-			else
-				lvi.pszText = const_cast<TCHAR*>(CTSTRINGTWO_I(listItems[i].descTwo));
-//FireDC++ end
-
 			ctrl.InsertItem(&lvi);
 			ctrl.SetCheckState(i, SettingsManager::getInstance()->getBool(SettingsManager::IntSetting(listItems[i].setting), true));
 		}
@@ -136,16 +129,8 @@ void PropPage::translate(HWND page, TextItem* textItems)
 {
 	if (textItems != NULL) {
 		for(int i = 0; textItems[i].itemID != 0; i++) {
-
-//FireDC++ start
-			if(textItems[i].translatedString != ResourceManager::LAST)
 			::SetDlgItemText(page, textItems[i].itemID,
 				CTSTRING_I(textItems[i].translatedString));
-			else
-				::SetDlgItemText(page, textItems[i].itemID,
-					CTSTRINGTWO_I(textItems[i].translatedStringTwo));
-//FireDC++ end
-
 		}
 	}
 }

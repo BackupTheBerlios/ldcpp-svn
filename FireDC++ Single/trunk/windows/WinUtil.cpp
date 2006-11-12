@@ -44,6 +44,10 @@
 #include "HubFrame.h"
 #include "MagnetDlg.h"
 
+//FireDC++ start
+#include "../Fire-Windows/WinUtilTwo.h"
+//FireDC++ end
+
 WinUtil::ImageMap WinUtil::fileIndexes;
 int WinUtil::fileImageCount;
 HBRUSH WinUtil::bgBrush = NULL;
@@ -294,6 +298,10 @@ void WinUtil::init(HWND hWnd) {
 	help.AppendMenu(MF_STRING, IDC_HELP_DONATE, CTSTRING(MENU_DONATE));
 
 	mainMenu.AppendMenu(MF_POPUP, (UINT_PTR)(HMENU)help, CTSTRING(MENU_HELP));
+
+//FireDC++ start
+	WinUtilTwo::additionMenuStuff(mainMenu);
+//FireDC++ end
 
 /** @todo fix this so that the system icon is used for dirs as well (we need
 			  to mask it so that incomplete folders appear correct */
@@ -662,6 +670,10 @@ bool WinUtil::checkCommand(tstring& cmd, tstring& param, tstring& message, tstri
 		}
 	} else if(Util::stricmp(cmd.c_str(), _T("rebuild")) == 0) {
 		HashManager::getInstance()->rebuild();
+//FireDC++ start
+	} else if(WinUtilTwo::possibleCommand(cmd, param, message, status)) {
+		return true;
+//FireDC++ end
 	} else {
 		return false;
 	}

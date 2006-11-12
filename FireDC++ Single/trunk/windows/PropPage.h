@@ -48,16 +48,10 @@ public:
 	struct ListItem {
 		int setting;
 		ResourceManager::Strings desc;
-//FireDC++ start
-		ResourceManager::StringsTwo descTwo;
-//FireDC++ end
 	};
 	struct TextItem {
 		WORD itemID;
 		ResourceManager::Strings translatedString;
-//FireDC++ start
-		ResourceManager::StringsTwo translatedStringTwo;
-//FireDC++ end
 	};
 
 protected:

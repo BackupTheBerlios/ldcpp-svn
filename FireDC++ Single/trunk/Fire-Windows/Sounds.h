@@ -24,15 +24,15 @@
 #endif // _MSC_VER > 1000
 
 #include <atlcrack.h>
-#include "PropPage.h"
-#include "ExListViewCtrl.h"
+#include "../Fire-Windows/dcplusplus-rips/Fire-PropPage.h"
+#include "../windows/ExListViewCtrl.h"
 
 
-class Sounds : public CPropertyPage<IDD_SOUNDS>, public PropPage
+class Sounds : public CPropertyPage<IDD_SOUNDS>, public FirePropPage
 {
 public:
-	Sounds(SettingsManager *s) : PropPage(s) {
-		title = _tcsdup((TSTRINGTWO(SETTINGS_FIREDC) + _T('\\') + TSTRING(SETTINGS_SOUNDS)).c_str());
+	Sounds(FireSettingsManager *s) : FirePropPage(s) {
+		title = _tcsdup(/*(FIRETSTRINGTWO(SETTINGS_FIREDC) + _T('\\') + */FIRETSTRING(SETTINGS_SOUNDS)/*)*/.c_str());
 		SetTitle(title);
 	};
 
@@ -40,7 +40,7 @@ public:
 
 	BEGIN_MSG_MAP_EX(Sounds)
 		MESSAGE_HANDLER(WM_INITDIALOG, onInitDialog)
-		COMMAND_HANDLER(IDC_BROWSE, BN_CLICKED, onBrowse)
+		COMMAND_HANDLER(IDC_BROWSED, BN_CLICKED, onBrowse)
 		NOTIFY_HANDLER(IDC_SOUND_OPTIONS, LVN_ITEMCHANGED, onItemChanged)
 		COMMAND_ID_HANDLER(IDC_NONE, onClickedNone)
 		COMMAND_ID_HANDLER(IDC_TEST, onTest)

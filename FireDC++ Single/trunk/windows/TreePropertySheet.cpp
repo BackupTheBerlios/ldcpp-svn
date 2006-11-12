@@ -34,9 +34,6 @@ int TreePropertySheet::PropSheetProc(HWND hwndDlg, UINT uMsg, LPARAM lParam) {
 LRESULT TreePropertySheet::onInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /* bHandled */) {
 	if(ResourceManager::getInstance()->isRTL())
 		SetWindowLong(GWL_EXSTYLE, GetWindowLong(GWL_EXSTYLE) | WS_EX_LAYOUTRTL);
-//FireDC++ start
-	tree_icons.CreateFromImage(IDB_TYPEDTREE_LIST, 16, 23, CLR_DEFAULT, IMAGE_BITMAP, LR_CREATEDIBSECTION | LR_SHARED);
-//FireDC++ end
 	hideTab();
 	addTree();
 	fillTree();
@@ -78,9 +75,6 @@ void TreePropertySheet::addTree()
 
 	CRect rc(SPACE_LEFT, rcPage.top, TREE_WIDTH, rcPage.bottom);
 	ctrlTree.Create(m_hWnd, rc, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN | WS_CLIPSIBLINGS | TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_DISABLEDRAGDROP, WS_EX_CLIENTEDGE, IDC_PAGE);
-//FireDC++ start
-	ctrlTree.SetImageList(tree_icons, TVSIL_NORMAL);
-//FireDC++ end
 }
 
 void TreePropertySheet::fillTree() {
@@ -121,9 +115,6 @@ HTREEITEM TreePropertySheet::createTree(const tstring& str, HTREEITEM parent, in
 			tvi.item.pszText = const_cast<LPTSTR>(str.c_str());
 			tvi.item.lParam = page;
 			item = ctrlTree.InsertItem(&tvi);
-//FireDC++ start
-			ctrlTree.SetItemImage(item, page, page);
-//FireDC++ end
 			ctrlTree.Expand(parent);
 			return item;
 		} else {
@@ -141,9 +132,6 @@ HTREEITEM TreePropertySheet::createTree(const tstring& str, HTREEITEM parent, in
 			tvi.item.lParam = -1;
 			tvi.item.pszText = const_cast<LPTSTR>(name.c_str());
 			item = ctrlTree.InsertItem(&tvi);
-//FireDC++ start
-			ctrlTree.SetItemImage(item, page, page);
-//FireDC++ end
 		}
 		ctrlTree.Expand(parent);
 		// Recurse...

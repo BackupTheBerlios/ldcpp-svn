@@ -52,6 +52,10 @@
 #include "../client/ShareManager.h"
 #include "../client/version.h"
 
+//FireDC++ start
+#include "../Fire-Windows/WinUtilTwo.h"
+//FireDC++ end
+
 MainFrame::MainFrame() : trayMessage(0), trayIcon(false), maximized(false), lastUpload(-1), lastUpdate(0),
 lastUp(0), lastDown(0), oldshutdown(false), stopperThread(NULL), c(new HttpConnection()),
 closing(false), missedAutoConnect(false), UPnP_TCPConnection(NULL), UPnP_UDPConnection(NULL)
@@ -75,6 +79,10 @@ MainFrame::~MainFrame() {
 	images.Destroy();
 	largeImages.Destroy();
 	largeImagesHot.Destroy();
+
+//FireDC++ start
+	FireMainFrame::destroyFireToolbar(fdmLargeImages, fdmLargeImagesHot);
+//FireDC++ end
 
 	WinUtil::uninit();
 }
@@ -192,6 +200,12 @@ LRESULT MainFrame::OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/,
 	CreateSimpleReBar(ATL_SIMPLE_REBAR_NOBORDER_STYLE);
 	AddSimpleReBarBand(hWndCmdBar);
 	AddSimpleReBarBand(hWndToolBar, NULL, TRUE);
+
+//FireDC++ start
+//	WinUtilTwo::initilize();
+	AddSimpleReBarBand(FireMainFrame::createFireToolbar(fdmLargeImages, fdmLargeImagesHot), NULL, TRUE);
+//FireDC++ end
+
 	CreateSimpleStatusBar();
 
 	ctrlStatus.Attach(m_hWndStatusBar);
@@ -747,6 +761,10 @@ LRESULT MainFrame::onGetToolTip(int idCtrl, LPNMHDR pnmh, BOOL& /*bHandled*/) {
 			case IDC_NET_STATS: stringId = ResourceManager::MENU_NETWORK_STATISTICS; break;
 			case IDC_NOTEPAD: stringId = ResourceManager::MENU_NOTEPAD; break;
 		}
+//FireDC++ start
+		if(stringId == -1) FireMainFrame::fdmToolTips(idCtrl, pDispInfo, stringId);
+//FireDC++ end
+
 		if(stringId != -1) {
 			_tcsncpy(pDispInfo->lpszText, CTSTRING_I((ResourceManager::Strings)stringId), 79);
 			pDispInfo->uFlags |= TTF_DI_SETITEM;

@@ -303,10 +303,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\client\SoundManager.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\client\SSLSocket.cpp"
 				>
 			</File>
@@ -577,10 +573,6 @@
 			</File>
 			<File
 				RelativePath=".\client\Socket.h"
-				>
-			</File>
-			<File
-				RelativePath=".\client\SoundManager.h"
 				>
 			</File>
 			<File

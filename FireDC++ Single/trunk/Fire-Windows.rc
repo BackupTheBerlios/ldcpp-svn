@@ -1,0 +1,161 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "Fire-Windows\resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "wtl\atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "Fire-Windows\\resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""wtl\\atlres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_FIRE_ABOUT DIALOGEX 0, 0, 258, 252
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Fire"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,98,231,50,14
+    GROUPBOX        "",IDC_STATIC,9,9,229,92
+    GROUPBOX        "Greetz && Contributors",IDC_STATIC,9,110,229,88,BS_CENTER
+    GROUPBOX        "Latest version",IDC_STATIC,9,201,229,24,BS_CENTER
+    CTEXT           "0.xxx",IDC_FIRE_ABOUT_LATEST,15,212,218,8
+    EDITTEXT        IDC_FIRE_ABOUT_THANKS,15,124,218,66,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+    EDITTEXT        IDC_FIRE_ABOUT_TTH,37,85,196,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    LTEXT           "TTH:",IDC_STATIC,15,85,18,12
+    CTEXT           "Static",IDC_FIRE_ABOUT_VERSION,15,41,218,41
+    ICON            "IDR_MAINFRAME",IDC_STATIC,112,17,20,20
+END
+
+IDD_SOUNDS DIALOGEX 0, 0, 275, 303
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_DISABLED | WS_CAPTION
+EXSTYLE WS_EX_STATICEDGE
+CAPTION "Sounds"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Make an annoying sound every time a private message is received",IDC_PRIVATE_MESSAGE_BEEP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,265,246,10
+    CONTROL         "Make an annoying sound when a private message window is opened",IDC_PRIVATE_MESSAGE_BEEP_OPEN,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,278,246,10
+    GROUPBOX        "Private message sound",IDC_FIREDC_PM_SOUND,7,252,257,41
+    PUSHBUTTON      "Browse...",IDC_BROWSED,204,224,50,14
+    PUSHBUTTON      "None",IDC_NONE,148,224,50,14
+    PUSHBUTTON      "Tes",IDC_TEST,17,224,50,14
+    CONTROL         "",IDC_SOUND_OPTIONS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,56,18,198,177
+    EDITTEXT        IDC_SOUND_FILE,56,204,198,12,ES_AUTOHSCROLL | WS_GROUP
+    GROUPBOX        "Logging",IDC_SETTINGS_SOUND,7,6,257,242
+    RTEXT           "File",IDC_SETTINGS_FILE_SOUND,15,206,36,8,WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_FIRE_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 251
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 245
+    END
+
+    IDD_SOUNDS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 293
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_FIRE_TOOLBAR         BITMAP                  "Fire-Res\\fdm_toolbar.bmp"
+IDB_FIRE_TOOLBAR20       BITMAP                  "Fire-Res\\fdm_toolbar20.bmp"
+IDB_FIRE_TOOLBAR20_HOT   BITMAP                  "Fire-Res\\fdm_toolbar20-highlight.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_FIRE_NOTEPAD         ICON                    "res\\notepad.ico"
+IDR_AUTOSEARCH          ICON                    "Fire-Res\\AutoSearch.ico"
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

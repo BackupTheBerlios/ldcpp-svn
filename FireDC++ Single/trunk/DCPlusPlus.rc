@@ -40,8 +40,7 @@ END
 
 3 TEXTINCLUDE 
 BEGIN
-    "\r\n"
-    "\0"
+    "#include ""Fire-Windows.rc""\0"
 END
 
 #endif    // APSTUDIO_INVOKED
@@ -58,7 +57,6 @@ IDB_USERS               BITMAP                  "res\\32bpp\\users.bmp"
 IDB_TOOLBAR             BITMAP                  "res\\32bpp\\toolbar.bmp"
 IDB_TOOLBAR20           BITMAP                  "res\\32bpp\\toolbar20.bmp"
 IDB_TOOLBAR20_HOT       BITMAP                  "res\\32bpp\\toolbar20-highlight.bmp"
-IDB_TYPEDTREE_LIST		BITMAP					"res\\32bpp\\settings_tree.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -230,6 +228,11 @@ BEGIN
     LTEXT           "Donate ???:s! (ok, $$$ is fine too =) (see help menu)",IDC_COLOREXAMPLE,107,17,91,32,SS_NOPREFIX | SS_SUNKEN | WS_BORDER | NOT WS_GROUP
     PUSHBUTTON      "Uploads",IDC_SETTINGS_UPLOAD_BAR_COLOR,209,17,51,14
     PUSHBUTTON      "Downloads",IDC_SETTINGS_DOWNLOAD_BAR_COLOR,209,35,51,14
+    GROUPBOX        "Sounds",IDC_SETTINGS_SOUNDS,6,62,264,42
+//    CONTROL         "Make an annoying sound every time a private message is received",IDC_PRIVATE_MESSAGE_BEEP,
+//                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,74,246,10
+//    CONTROL         "Make an annoying sound when a private message window is opened",IDC_PRIVATE_MESSAGE_BEEP_OPEN,
+//                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,18,87,246,10
     GROUPBOX        "Bold options",IDC_SETTINGS_BOLD_CONTENTS,5,106,263,98
     CONTROL         "",IDC_BOLD_BOOLEANS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,10,117,254,81
     LTEXT           "Note; most of these options require that you restart DC++",IDC_SETTINGS_REQUIRES_RESTART,7,209,253,8
@@ -567,26 +570,6 @@ BEGIN
     PUSHBUTTON      "...",IDC_BROWSE_TRUSTED_PATH,248,42,20,14
 END
 
-IDD_SOUNDS DIALOGEX 0, 0, 275, 303
-STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
-EXSTYLE WS_EX_STATICEDGE
-CAPTION "Sounds"
-FONT 8, "MS Shell Dlg", 400, 0, 0xEE
-BEGIN
-    CONTROL         "Make an annoying sound every time a private message is received",IDC_PRIVATE_MESSAGE_BEEP,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,265,246,10
-    CONTROL         "Make an annoying sound when a private message window is opened",IDC_PRIVATE_MESSAGE_BEEP_OPEN,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,278,246,10
-    GROUPBOX        "Private message sound",IDC_FIREDC_PM_SOUND,7,252,257,41
-    PUSHBUTTON      "Browse...",IDC_BROWSE,204,224,50,14
-    PUSHBUTTON      "None",IDC_NONE,148,224,50,14
-    PUSHBUTTON      "Tes",IDC_TEST,17,224,50,14
-    CONTROL         "",IDC_SOUND_OPTIONS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,56,18,198,177
-    EDITTEXT        IDC_SOUND_FILE,56,204,198,12,ES_AUTOHSCROLL | WS_GROUP
-    GROUPBOX        "Logging",IDC_SETTINGS_SOUND,7,6,257,242
-    RTEXT           "File",IDC_SETTINGS_FILE_SOUND,15,206,36,8,WS_TABSTOP
-END
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -817,11 +800,6 @@ BEGIN
         BOTTOMMARGIN, 218
     END
 
-    IDD_SOUNDS, DIALOG
-    BEGIN
-        BOTTOMMARGIN, 293
-    END
-
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -926,8 +904,7 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-
-
+#include "Fire-Windows.rc"
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 

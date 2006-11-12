@@ -31,31 +31,19 @@ public:
 #include "StringDefs.h"
 
 	void loadLanguage(const string& aFile);
-	const string& getString(Strings x) const { /*dcassert(x >= 0 && x < LAST);*/ return strings[x]; };
-	const wstring& getStringW(Strings x) const { /*dcassert(x >= 0 && x < LAST);*/ return wstrings[x]; };
+	const string& getString(Strings x) const { dcassert(x >= 0 && x < LAST); return strings[x]; }
+	const wstring& getStringW(Strings x) const { dcassert(x >= 0 && x < LAST); return wstrings[x]; }
 	bool isRTL() { return rtl; }
-
-//FireDC++ start
-	const string& getStringTwo(StringsTwo x) const { /*dcassert(x >= 0 && x < LASTTWO);*/ return stringsTwo[x]; };
-	const wstring& getStringTwoW(StringsTwo x) const { /*dcassert(x >= 0 && x < LASTTWO);*/ return wstringsTwo[x]; };
-//FireDC++ end
 private:
 	friend class Singleton<ResourceManager>;
 
 	typedef HASH_MAP<string, Strings> NameMap;
 	typedef NameMap::iterator NameIter;
 
-//FireDC++ start
-	typedef HASH_MAP<string, StringsTwo> NameMapTwo;
-	typedef NameMapTwo::iterator NameIterTwo;
-//FireDC++ end
-
 	ResourceManager() : rtl(false) {
 		createWide();
-//FireDC++ start
-		createWideTwo();
-//FireDC++ end
-	};
+	}
+
 	virtual ~ResourceManager() { }
 
 	static string strings[LAST];
@@ -64,16 +52,7 @@ private:
 
 	bool rtl;
 
-//FireDC++ start
-	static string stringsTwo[LASTTWO];
-	static wstring wstringsTwo[LASTTWO];
-	static string namesTwo[LASTTWO];
-//FireDC++ end
-
 	void createWide();
-//FireDC++ start
-	void createWideTwo();
-//FireDC++ end
 };
 
 
@@ -82,45 +61,18 @@ private:
 #define WSTRING(x) ResourceManager::getInstance()->getStringW(ResourceManager::x)
 #define CWSTRING(x) ResourceManager::getInstance()->getStringW(ResourceManager::x).c_str()
 
-//FireDC++ start
-#define STRINGTWO(x) ResourceManager::getInstance()->getStringTwo(ResourceManager::x)
-#define CSTRINGTWO(x) ResourceManager::getInstance()->getStringTwo(ResourceManager::x).c_str()
-#define WSTRINGTWO(x) ResourceManager::getInstance()->getStringTwoW(ResourceManager::x)
-#define CWSTRINGTWO(x) ResourceManager::getInstance()->getStringTwoW(ResourceManager::x).c_str()
-//FireDC++ end
-
 #define STRING_I(x) ResourceManager::getInstance()->getString(x)
 #define CSTRING_I(x) ResourceManager::getInstance()->getString(x).c_str()
 #define WSTRING_I(x) ResourceManager::getInstance()->getStringW(x)
 #define CWSTRING_I(x) ResourceManager::getInstance()->getStringW(x).c_str()
 
-//FireDC++ start
-#define STRINGTWO_I(x) ResourceManager::getInstance()->getStringTwo(x)
-#define CSTRINGTWO_I(x) ResourceManager::getInstance()->getStringTwo(x).c_str()
-#define WSTRINGTWO_I(x) ResourceManager::getInstance()->getStringTwoW(x)
-#define CWSTRINGTWO_I(x) ResourceManager::getInstance()->getStringTwoW(x).c_str()
-//FireDC++ end
-
 #ifdef UNICODE
 #define TSTRING WSTRING
 #define CTSTRING CWSTRING
 #define CTSTRING_I CWSTRING_I
-
-//FireDC++ start
-#define TSTRINGTWO WSTRINGTWO
-#define CTSTRINGTWO CWSTRINGTWO
-#define CTSTRINGTWO_I CWSTRINGTWO_I
-//FireDC++ end
-
 #else
 #define TSTRING STRING
 #define CTSTRING CSTRING
-
-//FireDC++ start
-#define TSTRINGTWO STRINGTWO
-#define CTSTRINGTWO CSTRINGTWO
-//FireDC++ end
-
 #endif
 
 

@@ -27,6 +27,10 @@
 #include "../client/SettingsManager.h"
 #include "../client/User.h"
 #include "../client/MerkleTree.h"
+//FireDC++ start
+#include "../Fire-Client/dcplusplus-rips/Fire-ResourceManager.h"
+#include "../Fire-Client/dcplusplus-rips/Fire-SettingsManager.h"
+//FireDC++ end
 
 // Some utilities for handling HLS colors, taken from Jean-Michel LE FOL's codeproject
 // article on WTL OfficeXP Menus
@@ -133,7 +137,9 @@ public:
 class FlatTabCtrl;
 class UserCommand;
 
-template<class T, int title>
+//FireDC++ start
+template<class T, int title, bool ifFire = false>
+//FireDC++ end
 class StaticFrame {
 public:
 	virtual ~StaticFrame() { frame = NULL; }
@@ -142,6 +148,10 @@ public:
 	static void openWindow() {
 		if(frame == NULL) {
 			frame = new T();
+//FireDC++ start
+			if (ifFire) frame->CreateEx(WinUtil::mdiClient, frame->rcDefault, FIRECTSTRING_I(FireResourceManager::FireStrings(title)));
+			else
+//FireDC++ end
 			frame->CreateEx(WinUtil::mdiClient, frame->rcDefault, CTSTRING_I(ResourceManager::Strings(title)));
 		} else {
 			// match the behavior of MainFrame::onSelected()
@@ -159,8 +169,10 @@ public:
 	}
 };
 
-template<class T, int title>
-T* StaticFrame<T, title>::frame = NULL;
+//FireDC++ start
+template<class T, int title, bool ifFire>
+T* StaticFrame<T, title, ifFire>::frame = NULL;
+//FireDC++ end
 
 class WinUtil {
 public:
@@ -342,6 +354,10 @@ public:
 	static void splitTokens(int* array, const string& tokens, int maxItems = -1) throw();
 	static void saveHeaderOrder(CListViewCtrl& ctrl, SettingsManager::StrSetting order,
 		SettingsManager::StrSetting widths, int n, int* indexes, int* sizes) throw();
+//FireDC++ start
+	static void saveHeaderOrder(CListViewCtrl& ctrl, FireSettingsManager::StrSetting order,
+		FireSettingsManager::StrSetting widths, int n, int* indexes, int* sizes) throw();
+//FireDC++ end
 
 	static bool isShift() { return (GetKeyState(VK_SHIFT) & 0x8000) > 0; }
 	static bool isAlt() { return (GetKeyState(VK_MENU) & 0x8000) > 0; }

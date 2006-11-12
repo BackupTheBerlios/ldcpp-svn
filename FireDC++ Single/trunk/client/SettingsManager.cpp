@@ -45,11 +45,6 @@ const string SettingsManager::settingTags[] =
 	"LogFilePrivateChat", "LogFileStatus", "LogFileUpload", "LogFileDownload", "LogFileSystem",
 	"LogFormatSystem", "LogFormatStatus", "DirectoryListingFrameOrder", "DirectoryListingFrameWidths",
 	"TLSPrivateKeyFile", "TLSCertificateFile", "TLSTrustedCertificatesPath",
-//FireDC++ start
-	"BeepFile", "BeginFile", "FinishedFile", "SourceFile", "UploadFile", "ChatNameFile", 
-	"SoundTTH", "SoundException", "SoundHubConnected", "SoundHubDisconnected", "SoundFavUserOnline",
-	"SonURLFile", "StartUploadFile", "SoundTypingNotify", 
-//FireDC++ end
 	"SENTRY",
 	// Ints
 	"IncomingConnections", "InPort", "Slots", "Rollback", "AutoFollow", "ClearSearch",
@@ -81,17 +76,6 @@ const string SettingsManager::settingTags[] =
 	"UseTLS", "AutoSearchLimit", "AltSortOrder", "AutoKickNoFavs", "PromptPassword", "SpyFrameIgnoreTthSearches",
 	"DontDlAlreadyQueued", "MaxCommandLength", "AllowUntrustedHubs", "AllowUntrustedClients",
 	"TLSPort", "FastHash",
-
-//FireDC++ start
-	//Sound stuff
-	"DownloadBeginsSoundActive", "DownloadFinishedSoundActive", "SourceAddedSoundActive", 
-	"UploadFinishedSoundActive", "PmSoundActive", "MynickSoundActive", 
-	"TthInvalidSoundActive", "ExceptionSoundActive", "HubConnectedSoundActive", 
-	"HubDisconnectedSoundActive", "FavuserOnlineSoundActive", "UrlClickSoundActive", 
-	"StartUploadSoundActive", "SoundTypingNotifyActive", 
-	"SoundsDisabled",
-//FireDC++ end
-
 	"SENTRY",
 	// Int64
 	"TotalUpload", "TotalDownload",
@@ -285,25 +269,6 @@ SettingsManager::SettingsManager()
 	setDefault(ALLOW_UNTRUSTED_HUBS, true);
 	setDefault(ALLOW_UNTRUSTED_CLIENTS, true);
 	setDefault(FAST_HASH, true);
-
-//FireDC++ start
-	setDefault(DOWNLOAD_BEGINS_SOUND_ACTIVE, false);
-	setDefault(DOWNLOAD_FINISHED_SOUND_ACTIVE, false);
-	setDefault(SOURCE_ADDED_SOUND_ACTIVE, false);
-	setDefault(UPLOAD_FINISHED_SOUND_ACTIVE, false);
-	setDefault(PM_SOUND_ACTIVE, false);
-	setDefault(MYNICK_SOUND_ACTIVE, false);
-	setDefault(TTH_INVALID_SOUND_ACTIVE, false);
-	setDefault(EXCEPTION_SOUND_ACTIVE, false);
-	setDefault(HUB_CONNECTED_SOUND_ACTIVE, false);
-	setDefault(HUB_DISCONNECTED_SOUND_ACTIVE, false);
-	setDefault(FAVUSER_ONLINE_SOUND_ACTIVE, false);
-	setDefault(URL_CLICK_SOUND_ACTIVE, false);
-	setDefault(START_UPLOAD_SOUND_ACTIVE, false);
-	setDefault(SOUND_TYPING_NOTIFY_ACTIVE, false);
-	setDefault(SOUNDS_DISABLED, false);
-//FireDC++ end
-
 
 #ifdef _WIN32
 	setDefault(MAIN_WINDOW_STATE, SW_SHOWNORMAL);

@@ -18,9 +18,6 @@
 
 #include "stdafx.h"
 #include "../client/DCPlusPlus.h"
-//FireDC++ start
-#include "../client/SoundManager.h"
-//FireDC++ end
 #include "Resource.h"
 
 #include "MainFrm.h"
@@ -29,6 +26,10 @@
 #include "SingleInstance.h"
 
 #include "../client/MerkleTree.h"
+
+//FireDC++ start
+#include "../Fire-Windows/WinUtilTwo.h"
+//FireDC++ end
 
 #include <delayimp.h>
 CAppModule _Module;
@@ -99,6 +100,10 @@ LONG __stdcall DCUnhandledExceptionFilter( LPEXCEPTION_POINTERS e )
 
 	f.write(buf, strlen(buf));
 
+//FireDC++ start
+	WinUtilTwo::addFireStuffToExceptionInfo(buf, f);
+//FireDC++ end
+
 	OSVERSIONINFOEX ver;
 	WinUtil::getVersionInfo(ver);
 
@@ -126,12 +131,9 @@ LONG __stdcall DCUnhandledExceptionFilter( LPEXCEPTION_POINTERS e )
 	f.close();
 
 	if(MessageBox(WinUtil::mainWnd, _T("DC++ just encountered a fatal bug and should have written an exceptioninfo.txt the same directory as the executable. You can upload this file at http://dcplusplus.sf.net/crash/ to help us find out what happened (please do not report this bug in the bug tracker unless you know the exact steps to reproduce it...). Go there now?"), _T("DC++ Has Crashed"), MB_YESNO | MB_ICONERROR) == IDYES) {
-//		WinUtil::openLink(_T("http://dcplusplus.sf.net/crash/"));
+		//WinUtil::openLink(_T("http://dcplusplus.sf.net/crash/"));
 	}
 
-//FireDC++ start
-	SOUND(SoundManager::EXCEPTION);
-//FireDC++ end
 #ifndef _DEBUG
 	EXTENDEDTRACEUNINITIALIZE();
 
@@ -301,6 +303,10 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 		HWND hOther = NULL;
 		EnumWindows(searchOtherInstance, (LPARAM)&hOther);
 
+//FireDC++ start
+if (!WinUtilTwo::allowMoreInstances(_tcslen(lpstrCmdLine)))
+//FireDC++ end
+
 #ifndef _DEBUG
 		if( hOther != NULL ) {
 #else
@@ -351,8 +357,16 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lp
 		dcdebug("Failed reading exe\n");
 	}
 
+//FireDC++ start
+	HINSTANCE hInstRich = ::LoadLibrary(_T("RICHED20.DLL"));
+//FireDC++ end
+	
 	int nRet = Run(lpstrCmdLine, nCmdShow);
 
+//FireDC++ start
+	if(hInstRich) ::FreeLibrary(hInstRich);
+//FireDC++ end
+	
 	_Module.Term();
 	::CoUninitialize();
 	::WSACleanup();

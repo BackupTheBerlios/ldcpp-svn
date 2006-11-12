@@ -27,9 +27,6 @@
 
 class TreePropertySheet : public CPropertySheetImpl<TreePropertySheet> {
 public:
-//FireDC++ start
-	virtual ~TreePropertySheet() { tree_icons.Destroy(); };
-//FireDC++ end
 	enum { WM_USER_INITDIALOG = WM_APP + 501 };
 	enum { TAB_MESSAGE_MAP = 13 };
 	TreePropertySheet(ATL::_U_STRINGorID title = (LPCTSTR)NULL, UINT uStartPage = 0, HWND hWndParent = NULL) :
@@ -72,10 +69,7 @@ private:
 		SPACE_BOTTOM = 10,
 		SPACE_LEFT = 10,
 		SPACE_RIGHT = 10,
-//FireDC++ start
-		TREE_WIDTH = 210,
-//FireDC++ end
-//		TREE_WIDTH = 150,
+		TREE_WIDTH = 150,
 	};
 
 	enum {
@@ -90,9 +84,6 @@ private:
 	HTREEITEM findItem(const tstring& str, HTREEITEM start);
 	HTREEITEM findItem(int page, HTREEITEM start);
 
-//FireDC++ start
-	CImageList tree_icons;
-//FireDC++ end
 	CTreeViewCtrl ctrlTree;
 	CContainedWindow tabContainer;
 

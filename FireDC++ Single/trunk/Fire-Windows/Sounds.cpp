@@ -21,51 +21,51 @@
 #include "Resource.h"
 
 #include "Sounds.h"
-#include "../client/SettingsManager.h"
-#include "../client/SoundManager.h"
-#include "WinUtil.h"
+#include "../Fire-Client/dcplusplus-rips/Fire-SettingsManager.h"
+#include "../Fire-Client/SoundManager.h"
+#include "../windows/WinUtil.h"
 
-PropPage::TextItem Sounds::texts[] = {
-	{ IDC_PRIVATE_MESSAGE_BEEP,							ResourceManager::SETTINGS_PM_BEEP },
-	{ IDC_PRIVATE_MESSAGE_BEEP_OPEN,					ResourceManager::SETTINGS_PM_BEEP_OPEN },
-	{ IDC_FIREDC_PM_SOUND,								ResourceManager::LAST, ResourceManager::SETFIREDC_PRIVATE_SOUND },
-	{ IDC_BROWSE,										ResourceManager::BROWSE },
-	{ IDC_NONE,											ResourceManager::LAST, ResourceManager::NONE },
-	{ IDC_TEST,											ResourceManager::LAST, ResourceManager::TEST},
-	{ IDC_SETTINGS_SOUND,								ResourceManager::SETTINGS_SOUNDS },
-	{ IDC_SETTINGS_FILE_SOUND,							ResourceManager::FILE },
-	{ 0, ResourceManager::SETTINGS_AUTO_AWAY }
+FirePropPage::TextItem Sounds::texts[] = {
+	{ IDC_PRIVATE_MESSAGE_BEEP,							FireResourceManager::SETTINGS_PM_BEEP },
+	{ IDC_PRIVATE_MESSAGE_BEEP_OPEN,					FireResourceManager::SETTINGS_PM_BEEP_OPEN },
+	{ IDC_FIREDC_PM_SOUND,								FireResourceManager::LAST, FireResourceManager::SETFIREDC_PRIVATE_SOUND },
+	{ IDC_BROWSED,										FireResourceManager::BROWSE },
+	{ IDC_NONE,											FireResourceManager::LAST, FireResourceManager::NONE },
+	{ IDC_TEST,											FireResourceManager::LAST, FireResourceManager::TEST},
+	{ IDC_SETTINGS_SOUND,								FireResourceManager::SETTINGS_SOUNDS },
+	{ IDC_SETTINGS_FILE_SOUND,							FireResourceManager::FILE },
+	{ 0, FireResourceManager::FIRE_SETTINGS_AUTO_AWAY }
 };
 
-PropPage::Item Sounds::items[] = {
-	{ IDC_PRIVATE_MESSAGE_BEEP, SettingsManager::PRIVATE_MESSAGE_BEEP, PropPage::T_BOOL },
-	{ IDC_PRIVATE_MESSAGE_BEEP_OPEN, SettingsManager::PRIVATE_MESSAGE_BEEP_OPEN, PropPage::T_BOOL },
-	{ 0, 0, PropPage::T_END }
+FirePropPage::Item Sounds::items[] = {
+	{ IDC_PRIVATE_MESSAGE_BEEP, FireSettingsManager::PRIVATE_MESSAGE_BEEP, FirePropPage::T_BOOL },
+	{ IDC_PRIVATE_MESSAGE_BEEP_OPEN, FireSettingsManager::PRIVATE_MESSAGE_BEEP_OPEN, FirePropPage::T_BOOL },
+	{ 0, 0, FirePropPage::T_END }
 };
 
-PropPage::ListItem Sounds::listItems[] = {
-	{ SettingsManager::DOWNLOAD_BEGINS_SOUND_ACTIVE,	ResourceManager::SOUND_DOWNLOAD_BEGINS },
-	{ SettingsManager::DOWNLOAD_FINISHED_SOUND_ACTIVE,	ResourceManager::SOUND_DOWNLOAD_FINISHED },
-//	{ SettingsManager::SOURCE_ADDED_SOUND_ACTIVE,		ResourceManager::SOUND_SOURCE_ADDED }, 
-	{ SettingsManager::UPLOAD_FINISHED_SOUND_ACTIVE,	ResourceManager::SOUND_UPLOAD_FINISHED },
-	{ SettingsManager::PM_SOUND_ACTIVE,					ResourceManager::LAST, ResourceManager::SETFIREDC_PRIVATE_SOUND },
-//	{ SettingsManager::MYNICK_SOUND_ACTIVE,				ResourceManager::MYNICK_IN_CHAT },
-//	{ SettingsManager::TTH_INVALID_SOUND_ACTIVE,		ResourceManager::SOUND_TTH_INVALID },
-	{ SettingsManager::EXCEPTION_SOUND_ACTIVE,			ResourceManager::SOUND_EXCEPTION },
-	{ SettingsManager::HUB_CONNECTED_SOUND_ACTIVE,		ResourceManager::HUB_CONNECTED },
-	{ SettingsManager::HUB_DISCONNECTED_SOUND_ACTIVE,	ResourceManager::HUB_DISCONNECTED },
-	{ SettingsManager::FAVUSER_ONLINE_SOUND_ACTIVE,		ResourceManager::FAVUSER_ONLINE },
-	{ SettingsManager::URL_CLICK_SOUND_ACTIVE,			ResourceManager::LAST, ResourceManager::SOUND_URL_CLICK },
-	{ SettingsManager::START_UPLOAD_SOUND_ACTIVE,		ResourceManager::LAST, ResourceManager::SOUND_START_UPLOAD },
-	{ SettingsManager::SOUND_TYPING_NOTIFY_ACTIVE,		ResourceManager::SOUND_TYPING_NOTIFY },
-	{ 0,												ResourceManager::SETTINGS_AUTO_AWAY }
+FirePropPage::ListItem Sounds::listItems[] = {
+	{ FireSettingsManager::DOWNLOAD_BEGINS_SOUND_ACTIVE,		FireResourceManager::SOUND_DOWNLOAD_BEGINS },
+	{ FireSettingsManager::DOWNLOAD_FINISHED_SOUND_ACTIVE,	FireResourceManager::SOUND_DOWNLOAD_FINISHED },
+//	{ FireSettingsManager::SOURCE_ADDED_SOUND_ACTIVE,		FireResourceManager::SOUND_SOURCE_ADDED }, 
+	{ FireSettingsManager::UPLOAD_FINISHED_SOUND_ACTIVE,		FireResourceManager::SOUND_UPLOAD_FINISHED },
+	{ FireSettingsManager::PM_SOUND_ACTIVE,					FireResourceManager::LAST, FireResourceManager::SETFIREDC_PRIVATE_SOUND },
+//	{ FireSettingsManager::MYNICK_SOUND_ACTIVE,				FireResourceManager::MYNICK_IN_CHAT },
+//	{ FireSettingsManager::TTH_INVALID_SOUND_ACTIVE,			FireResourceManager::SOUND_TTH_INVALID },
+	{ FireSettingsManager::EXCEPTION_SOUND_ACTIVE,			FireResourceManager::SOUND_EXCEPTION },
+	{ FireSettingsManager::HUB_CONNECTED_SOUND_ACTIVE,		FireResourceManager::HUB_CONNECTED },
+	{ FireSettingsManager::HUB_DISCONNECTED_SOUND_ACTIVE,	FireResourceManager::HUB_DISCONNECTED },
+	{ FireSettingsManager::FAVUSER_ONLINE_SOUND_ACTIVE,		FireResourceManager::FAVUSER_ONLINE },
+	{ FireSettingsManager::URL_CLICK_SOUND_ACTIVE,			FireResourceManager::LAST, FireResourceManager::SOUND_URL_CLICK },
+	{ FireSettingsManager::START_UPLOAD_SOUND_ACTIVE,		FireResourceManager::LAST, FireResourceManager::SOUND_START_UPLOAD },
+	{ FireSettingsManager::SOUND_TYPING_NOTIFY_ACTIVE,		FireResourceManager::SOUND_TYPING_NOTIFY },
+	{ 0,													FireResourceManager::FIRE_SETTINGS_AUTO_AWAY }
 };
 
 
 LRESULT Sounds::onInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& /*bHandled*/)
 {
-	PropPage::translate((HWND)(*this), texts);
-	PropPage::read((HWND)*this, items, listItems, GetDlgItem(IDC_SOUND_OPTIONS));
+	FirePropPage::translate((HWND)(*this), texts);
+	FirePropPage::read((HWND)*this, items, listItems, GetDlgItem(IDC_SOUND_OPTIONS));
 
 	for(int i = 0; i < SoundManager::LAST; ++i) {
 		options.push_back(Text::toT(SoundManager::getInstance()->getSetting(i, SoundManager::FILE)));
@@ -101,7 +101,7 @@ LRESULT Sounds::onItemChanged(int /*idCtrl*/, LPNMHDR /*pnmh*/, BOOL& /*bHandled
 
 void Sounds::write()
 {
-	PropPage::write((HWND)*this, items, listItems, GetDlgItem(IDC_SOUND_OPTIONS));
+	FirePropPage::write((HWND)*this, items, listItems, GetDlgItem(IDC_SOUND_OPTIONS));
 
 	//make sure we save the last edit too, the user
 	//might not have changed the selection

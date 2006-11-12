@@ -36,10 +36,13 @@
 #include "TransferView.h"
 #include "UPnP.h"
 
+#include "..\Fire-Windows\dcplusplus-rips\Fire-MainFrm.h"
+
 class MainFrame : public CMDIFrameWindowImpl<MainFrame>, public CUpdateUI<MainFrame>,
 		public CMessageFilter, public CIdleHandler, public CSplitterImpl<MainFrame, false>,
 		private TimerManagerListener, private HttpConnectionListener, private QueueManagerListener,
 		private LogManagerListener
+		, public FireMainFrame
 {
 public:
 	MainFrame();
@@ -48,6 +51,8 @@ public:
 	DECLARE_FRAME_WND_CLASS(_T(APPNAME), IDR_MAINFRAME)
 
 	CMDICommandBarCtrl m_CmdBar;
+
+	CImageList fdmLargeImages, fdmLargeImagesHot;
 
 	enum {
 		DOWNLOAD_LISTING,
@@ -151,6 +156,7 @@ public:
 		CHAIN_MSG_MAP(CUpdateUI<MainFrame>)
 		CHAIN_MSG_MAP(CMDIFrameWindowImpl<MainFrame>)
 		CHAIN_MSG_MAP(splitterBase);
+		CHAIN_COMMANDS(FireMainFrame)
 	END_MSG_MAP()
 
 	BEGIN_UPDATE_UI_MAP(MainFrame)

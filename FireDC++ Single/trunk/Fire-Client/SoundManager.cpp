@@ -17,7 +17,7 @@
  */
 
 #include "stdinc.h"
-#include "DCPlusPlus.h"
+#include "../client/DCPlusPlus.h"
 
 #include "SoundManager.h"
 

@@ -1,3 +1,19 @@
+** svn 6
+	Fixed the Greetings
+	Added WinUtilTwo files
+
+** svn 5
+	Ported everything to Fire project
+	Remove AppearancePage from Fire-windows
+
+** svn 4
+	Added Fire-Client project
+	Added Fire-Windows project
+	Added Fire-Res project
+	Moved SoundManager from Client to Fire-Client
+	Moved Sounds from Windows to Fire-Windows
+	Moved IDD_SOUNDS from DCPlusPlus.rc to Fire-DCPlusPlus.rc
+
 ** svn 3
 	Modified ProperiesDlg.cpp
 	Modified TypedTreeList.cpp/.h

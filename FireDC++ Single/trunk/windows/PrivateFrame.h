@@ -73,7 +73,6 @@ public:
 		MESSAGE_HANDLER(WM_KEYDOWN, onChar)
 		MESSAGE_HANDLER(WM_KEYUP, onChar)
 		MESSAGE_HANDLER(WM_LBUTTONDBLCLK, onLButton)
-		MESSAGE_HANDLER(BM_SETCHECK, onSoundActive)
 	END_MSG_MAP()
 
 	LRESULT OnCreate(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled);
@@ -139,28 +138,11 @@ public:
 	void sendMessage(const tstring& msg);
 
 	User::Ptr& getUser() { return replyTo; }
-
-//FireDC++ start
-	LRESULT onSoundActive(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, BOOL& bHandled) {
-        bHandled = FALSE;
-		replyTo->setSoundActive(wParam == BST_CHECKED);
-		if (replyTo->getSoundActive()) {
-			replyTo->setSoundActive(true);
-		} else {
-			replyTo->setSoundActive(false);
-		}
-		return 0;
-    }
-//FireDC++ end
-
 private:
 	PrivateFrame(const User::Ptr& replyTo_) : replyTo(replyTo_),
 		created(false), closed(false),
 		ctrlMessageContainer(_T("edit"), this, PM_MESSAGE_MAP),
-		ctrlClientContainer(_T("edit"), this, PM_MESSAGE_MAP),
-//FireDC++ start
-		soundActiveContainer(WC_BUTTON, this, PM_MESSAGE_MAP)/*, menuItems(0)*/ {
-//FireDC++ end
+		ctrlClientContainer(_T("edit"), this, PM_MESSAGE_MAP) {
 	}
 
 	virtual ~PrivateFrame() { }
@@ -175,10 +157,6 @@ private:
 
 	CMenu tabMenu;
 
-//FireDC++ start
-	CButton ctrlSoundActive;
-	CContainedWindow soundActiveContainer;
-//FireDC++ end
 	User::Ptr replyTo;
 	CContainedWindow ctrlMessageContainer;
 	CContainedWindow ctrlClientContainer;

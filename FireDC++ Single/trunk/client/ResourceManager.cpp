@@ -26,9 +26,6 @@
 #include "Text.h"
 
 wstring ResourceManager::wstrings[ResourceManager::LAST];
-//FireDC++ start
-wstring ResourceManager::wstringsTwo[ResourceManager::LASTTWO];
-//FireDC++ end
 
 void ResourceManager::loadLanguage(const string& aFile) {
 	try {
@@ -37,18 +34,11 @@ void ResourceManager::loadLanguage(const string& aFile) {
 		xml.fromXML(f.read());
 
 		HASH_MAP<string, int> h;
-//FireDC++ start
-		HASH_MAP<string, int> e;
-		
-//FireDC++ end
+
 		for(int i = 0; i < LAST; ++i) {
 			h[names[i]] = i;
 		}
-//FireDC++ start
-		for(int i = 0; i < LASTTWO; ++i) {
-			e[namesTwo[i]] = i;
-		}
-//FireDC++ end
+
 		if(xml.findChild("Language")) {
 			rtl = xml.getBoolChildAttrib("RightToLeft");
 
@@ -65,21 +55,6 @@ void ResourceManager::loadLanguage(const string& aFile) {
 				}
 				createWide();
 			}
-//FireDC++ start
-			xml.stepOut();
-			if(xml.findChild("StringsTwo")) {
-				xml.stepIn();
-
-				while(xml.findChild("StringTwo")) {
-					HASH_MAP<string, int>::iterator j = e.find(xml.getChildAttrib("Name"));
-
-					if(j != e.end()) {
-						stringsTwo[j->second] = xml.getChildData();
-					}
-				}
-				createWideTwo();
-			}
-//FireDC++ end
 		}
 	} catch(const Exception&) {
 		// ...
@@ -92,12 +67,3 @@ void ResourceManager::createWide() {
 		Text::utf8ToWide(strings[i], wstrings[i]);
 	}
 }
-
-//FireDC++ start
-void ResourceManager::createWideTwo() {
-	for(int i = 0; i < LASTTWO; ++i) {
-		wstringsTwo[i].clear();
-		Text::utf8ToWide(stringsTwo[i], wstringsTwo[i]);
-	}
-}
-//FireDC++ end
